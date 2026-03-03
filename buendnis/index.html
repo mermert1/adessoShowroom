@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bündnis Developer Portal | Built with Drupal</title>
+    <meta name="description" content="Official Bündnis Developer Portal. Managed with Drupal Enterprise CMS.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/buendnis/portal.css">
+</head>
+
+<body class="drupal-business">
+    <!-- Drupal Toolbar (Mock Admin Bar) -->
+    <div class="drupal-toolbar">
+        <div class="toolbar-container">
+            <div class="toolbar-brand">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                    <path
+                        d="M256,16a240,240,0,1,0,240,240A240,240,0,0,0,256,16Zm0,448a208,208,0,1,1,208-208A208,208,0,0,1,256,464Z"
+                        fill="currentColor" />
+                    <circle cx="256" cy="256" r="48" fill="currentColor" />
+                </svg>
+                <span>Bündnis CMS</span>
+            </div>
+            <nav class="toolbar-nav">
+                <a href="/index.html">Showroom Home</a>
+                <a href="#" class="active">Manage Portal</a>
+                <a href="#">Configuration</a>
+                <a href="#">Reports</a>
+            </nav>
+            <div class="toolbar-user">
+                <span>Hello, <strong>Site Manager</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="v1-topbar">
+        <div class="container bp-nav-container">
+            <div class="bp-brand">
+                <div class="bp-logo">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="24" width="6" height="12" rx="1" fill="#003781" />
+                        <rect x="13" y="16" width="6" height="20" rx="1" fill="#0066b3" />
+                        <rect x="22" y="8" width="6" height="28" rx="1" fill="#00A3E0" />
+                        <rect x="31" y="20" width="6" height="16" rx="1" fill="#003781" />
+                    </svg>
+                </div>
+                <div class="bp-title-group">
+                    <span class="bp-site-name">Bündnis Developer</span>
+                    <span class="bp-site-slogan">Secure Versicherung API Platform</span>
+                </div>
+            </div>
+            <div class="v1-nav-links">
+                <a href="#" class="active" data-v1-view="home">Dashboard</a>
+                <a href="#" data-v1-view="docs">Documentation</a>
+                <a href="#" data-v1-view="api" class="auth-only" style="display:none;">API Catalog</a>
+                <a href="#" data-v1-view="faq">Support & FAQs</a>
+            </div>
+            <div class="bp-actions" style="display:flex; align-items:center; gap:1.25rem;">
+                <button id="theme-toggle" class="btn-icon theme-toggle" title="Toggle Theme">
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <div id="v1-auth-section">
+                    <button class="btn btn-buendnis-primary btn-sm" id="btn-v1-login">Portal Login</button>
+                </div>
+                <a href="/index.html" class="v1-exit-btn" id="btn-exit-v1" title="Exit to Showroom">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header (Breadcrumbs & Title) -->
+    <div class="page-header-bg">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <a href="#">Home</a> / <span>Developer Portal</span>
+            </nav>
+            <h1 class="page-title">Developer Portal <span class="badge status-verified">Enterprise</span></h1>
+
+            <!-- Drupal Tasks Tabs -->
+            <nav class="drupal-tabs">
+                <a href="#" class="active" data-v1-view="home">Overview</a>
+                <a href="#" data-v1-view="docs">Documentation</a>
+                <a href="#" data-v1-view="api">API Catalog</a>
+                <a href="#" data-v1-view="faq">FAQ</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="page-content container">
+        <!-- V2 Business Views -->
+        <div id="v1-views-container">
+
+            <!-- Dashboard Overiew -->
+            <div id="v1-view-home" class="v1-view visible">
+                <div class="business-dashboard-grid">
+                    <div class="dashboard-main glass">
+                        <h2>Willkommen im Bündnis Business Portal</h2>
+                        <p>Verwalten Sie Ihre API-Integrationen und greifen Sie auf technische Spezifikationen zu. Die
+                            Bündnis-Plattform bietet höchste Datensicherheit und skalierbare Endpunkte für Ihre
+                            Versicherungslösungen.</p>
+
+                        <div class="info-blocks-grid">
+                            <div class="info-block">
+                                <div class="info-icon-container">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="info-svg">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                </div>
+                                <h4>API Status</h4>
+                                <p>Alle Systeme laufen im Normalbetrieb. Durchschnittliche Latenz: 42ms.</p>
+                            </div>
+                            <div class="info-block">
+                                <div class="info-icon-container">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="info-svg">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                </div>
+                                <h4>Neue Spezifikationen</h4>
+                                <p>Die v2.4 der Schadens-API ist jetzt für EA-Partner verfügbar.</p>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-cta">
+                            <button class="btn btn-buendnis-primary" data-v1-view="docs">Dokumentation starten</button>
+                            <button class="btn btn-buendnis-outline" id="btn-v1-cta-login">Sandbox anfordern</button>
+                        </div>
+                    </div>
+
+                    <aside class="dashboard-sidebar">
+                        <div class="block glass">
+                            <h3>Key Metrics</h3>
+                            <div class="metric-row">
+                                <span>Requests (24h)</span>
+                                <strong>1.2M</strong>
+                            </div>
+                            <div class="metric-row">
+                                <span>Success Rate</span>
+                                <strong style="color:var(--color-success)">99.98%</strong>
+                            </div>
+                        </div>
+                        <div class="block glass">
+                            <h3>Recent Updates</h3>
+                            <ul class="update-list">
+                                <li>OAuth 2.1 support added</li>
+                                <li>mTLS endpoint documentation</li>
+                                <li>New SDKs for Java/Python</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- Docs -->
+            <div id="v1-view-docs" class="v1-view" style="display:none;">
+                <div class="v1-docs-layout glass">
+                    <aside class="v1-docs-sidebar">
+                        <nav class="v1-docs-nav">
+                            <div class="nav-section-title">Getting Started</div>
+                            <a href="#" class="active" data-v1-sub="getting-started">Introduction</a>
+                            <a href="#" data-v1-sub="auth">Authentication</a>
+                            <div class="nav-section-title">Reference</div>
+                            <a href="#" data-v1-sub="api-ref">API Protocols</a>
+                            <a href="#" data-v1-sub="user-guide">Best Practices</a>
+                        </nav>
+                    </aside>
+                    <main class="v1-docs-content">
+                        <!-- Content via JS switch -->
+                        <div id="v1-docs-getting-started" class="v1-docs-page">
+                            <h2>Introduction to Bündnis API</h2>
+                            <p>Our APIs are built with enterprise-grade security and developer efficiency in mind.
+                                Follow the structured guides below to integrate our services into your insurance
+                                workflow.</p>
+                            <div class="portal-alert info">
+                                <strong>Notice:</strong> Production access requires a signed Framework Agreement. Use
+                                the Sandbox for development and testing.
+                            </div>
+                            <h3>Core Principles</h3>
+                            <ul class="check-list">
+                                <li><strong>RESTful Architecture</strong>: Standard HTTP methods and status codes.</li>
+                                <li><strong>JSON Format</strong>: Simplified data exchange for all endpoints.</li>
+                                <li><strong>Security First</strong>: mTLS and OAuth 2.1 by default.</li>
+                            </ul>
+                        </div>
+
+                        <div id="v1-docs-auth" class="v1-docs-page" style="display:none;">
+                            <h2>Authentication & Security</h2>
+                            <p>We use OAuth 2.1 for authorization. To access our APIs, you must first obtain a client
+                                token.</p>
+                            <div class="code-block">
+                                <div class="code-block-header">Token Request Example</div>
+                                <pre><code>curl -X POST https://api.buendnis.de/v1/oauth/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials&client_id=YOUR_ID&client_secret=YOUR_SECRET"</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="v1-docs-api-ref" class="v1-docs-page" style="display:none;">
+                            <h2>API Protocols & Versioning</h2>
+                            <p>All APIs are versioned to ensure backward compatibility. Use the version prefix in the
+                                URL (e.g., /v1/).</p>
+                            <div class="table-container">
+                                <table class="v1-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Method</th>
+                                            <th>Endpoint</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="method-badge get">GET</span></td>
+                                            <td>/claims</td>
+                                            <td>List all insurance claims</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="method-badge post">POST</span></td>
+                                            <td>/policy/create</td>
+                                            <td>Create a new insurance policy</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="v1-docs-user-guide" class="v1-docs-page" style="display:none;">
+                            <h2>Best Practices</h2>
+                            <p>To optimize your integration, please follow these industry-standard best practices.</p>
+                            <ul>
+                                <li>Implement exponential backoff for rate-limited requests.</li>
+                                <li>Cache frequently accessed metadata like policy types.</li>
+                                <li>Use the test environment for all initial development.</li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <!-- API Catalog -->
+            <div id="v1-view-api" class="v1-view" style="display:none;">
+                <div class="api-catalog-page">
+                    <h2>API Katalog & Services</h2>
+                    <p>Hier finden Sie alle verfügbaren Schnittstellen, sortiert nach Geschäftsbereich.</p>
+                    <div class="buendnis-api-grid">
+                        <!-- Cards keep business style -->
+                        <div class="buendnis-api-card glass">
+                            <div class="api-icon-container">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <h3>Versand & Logistik</h3>
+                            <p>Verfolgen Sie Policen und physische Mailings in Echtzeit.</p>
+                            <div class="api-meta">
+                                <span class="api-tag">v2.1</span>
+                                <span class="api-status operational">Operational</span>
+                            </div>
+                            <button class="btn btn-buendnis-primary btn-sm">Integration Guide</button>
+                        </div>
+                        <div class="buendnis-api-card glass">
+                            <div class="api-icon-container">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <h3>Risk & Underwriting</h3>
+                            <p>Automatisierte Risikoprüfung basierend auf Marktdaten.</p>
+                            <div class="api-meta">
+                                <span class="api-tag beta">Beta</span>
+                                <span class="api-status operational">Operational</span>
+                            </div>
+                            <button class="btn btn-buendnis-primary btn-sm">Request Access</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div id="v1-view-faq" class="v1-view" style="display:none;">
+                <div class="faq-page">
+                    <h2>Häufig gestellte Fragen (Support)</h2>
+                    <div class="v1-faq-list">
+                        <div class="faq-item glass">
+                            <button class="faq-question">
+                                <span>Wie erhalte ich einen Business Account?</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="faq-toggle-icon">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Business Accounts werden nach einer Identitätsprüfung Ihres Unternehmens
+                                    freigeschaltet. Kontaktieren Sie dazu bitte Ihren Bündnis-Berater oder registrieren
+                                    Sie sich über das Kontaktformular.</p>
+                            </div>
+                        </div>
+                        <!-- ... other FAQs ... -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="v1-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-col">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="24" width="6" height="12" rx="1" fill="#003781" />
+                            <rect x="13" y="16" width="6" height="20" rx="1" fill="#0066b3" />
+                            <rect x="22" y="8" width="6" height="28" rx="1" fill="#00A3E0" />
+                            <rect x="31" y="20" width="6" height="16" rx="1" fill="#003781" />
+                        </svg>
+                    </div>
+                    <strong>Bündnis Developer</strong>
+                    <p>Digital Enterprise Insurance Hub. Managing the future of insurance integrations.</p>
+                    <div class="drupal-badge">Powered by Drupal 10</div>
+                </div>
+                <div class="footer-nav-col">
+                    <h4>Platform</h4>
+                    <nav>
+                        <a href="#">API Documentation</a>
+                        <a href="#">Security Overview</a>
+                        <a href="#">Release Notes</a>
+                    </nav>
+                </div>
+                <div class="footer-nav-col">
+                    <h4>Legal & Corporate</h4>
+                    <nav>
+                        <a href="#">Imprint</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bündnis Versicherung AG. All rights reserved.</p>
+                <div class="social-links">
+                    <!-- Placeholder SVGs for social -->
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="portal-login-modal" class="portal-modal">
+        <div class="portal-modal-content glass">
+            <div class="modal-header">
+                <h3>V2 Portal Secure Login</h3>
+                <button id="close-portal-login" class="btn-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Enterprise Email</label>
+                    <input type="text" value="manager@adesso.de" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Access Key</label>
+                    <input type="password" value="••••••••" readonly>
+                </div>
+                <button class="btn btn-buendnis-primary" id="btn-portal-submit-login"
+                    style="width:100%">Authenticate</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/buendnis/portal.js"></script>
+</body>
+
+</html>
