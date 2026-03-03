@@ -200,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Handle Mock Buttons (Mock Configuration/Reports)
-    document.querySelectorAll('.toolbar-nav a').forEach(a => {
-        if (a.getAttribute('href') === '#') {
+    document.querySelectorAll('.toolbar-nav a, .placeholder-link').forEach(a => {
+        if (a.getAttribute('href') === '#' || a.classList.contains('placeholder-link')) {
             a.addEventListener('click', e => {
                 e.preventDefault();
                 showToast(`Funktion "${a.textContent}" ist für diesen Showroom deaktiviert.`);
