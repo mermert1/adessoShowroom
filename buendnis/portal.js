@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Check for saved theme or system preference
+    // Check for saved theme
     const savedTheme = localStorage.getItem('buendnis_theme');
-    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = savedTheme === 'dark' || (!savedTheme && systemDark);
+    // Default to light if no preference is saved
+    const isDark = savedTheme === 'dark';
 
     if (isDark) {
         document.body.setAttribute('data-theme', 'dark');
@@ -41,6 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- View Switching ---
     function switchV1View(viewName) {
+        // Auth check for certain views
+        if (viewName === 'api' && !portalAuthenticated) {
+            openModal();
+            return;
+        }
+
         document.querySelectorAll('.v1-view').forEach(v => {
             v.style.display = 'none';
         });
@@ -94,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCloseModal = document.getElementById('close-portal-login');
     const btnSubmitLogin = document.getElementById('btn-portal-submit-login');
     let portalAuthenticated = false;
+
+    // Initial auth check to hide elements for guests
+    document.querySelectorAll('.auth-only').forEach(el => el.style.display = 'none');
 
     function openModal(e) {
         if (e) e.preventDefault();
