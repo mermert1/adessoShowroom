@@ -71,8 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.v1-docs-page').forEach(p => p.style.display = 'none');
         const target = document.getElementById('v1-docs-' + pageName);
         if (target) target.style.display = 'block';
+        
         document.querySelectorAll('.v1-docs-nav a').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('data-v1-sub') === pageName);
+            const isActive = a.getAttribute('data-v1-sub') === pageName;
+            a.classList.toggle('active', isActive);
+            
+            // Expand parent accordion group if active
+            if (isActive) {
+                const parentGroup = a.closest('.nav-group');
+                if (parentGroup && !parentGroup.classList.contains('active')) {
+                    // Close others
+                    document.querySelectorAll('.nav-group').forEach(other => {
+                        other.classList.remove('active');
+                        const content = other.querySelector('.nav-group-content');
+                        if (content) content.style.display = 'none';
+                    });
+                    
+                    parentGroup.classList.add('active');
+                    const content = parentGroup.querySelector('.nav-group-content');
+                    if (content) content.style.display = 'flex';
+                }
+            }
         });
     }
 
@@ -162,6 +181,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSubmitLogin) {
         btnSubmitLogin.addEventListener('click', doLogin);
     }
+
+    // --- Docs Sidebar Accordion ---
+    const docsNavGroups = document.querySelectorAll('.nav-group');
+
+    docsNavGroups.forEach(group => {
+        const toggleBtn = group.querySelector('.nav-group-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const isActive = group.classList.contains('active');
+                
+                // Close all other groups
+                docsNavGroups.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    const otherContent = otherItem.querySelector('.nav-group-content');
+                    if (otherContent) otherContent.style.display = 'none';
+                });
+
+                // Open clicked group if it wasn't active
+                if (!isActive) {
+                    group.classList.add('active');
+                    const content = group.querySelector('.nav-group-content');
+                    if (content) content.style.display = 'flex';
+                }
+            });
+        }
+    });
 
     // --- FAQ Accordion ---
     const faqItems = document.querySelectorAll('.faq-item');

@@ -117,10 +117,10 @@
             <div id="v1-view-home" class="v1-view visible">
                 <div class="business-dashboard-grid">
                     <div class="dashboard-main glass">
-                        <h2>Willkommen im Bündnis Business Portal</h2>
-                        <p>Verwalten Sie Ihre API-Integrationen und greifen Sie auf technische Spezifikationen zu. Die
-                            Bündnis-Plattform bietet höchste Datensicherheit und skalierbare Endpunkte für Ihre
-                            Versicherungslösungen.</p>
+                        <h2>APIS THAT SECURE YOUR FUTURE</h2>
+                        <p>Discover endless possibilities with our API Marketplace and explore the world of insurance
+                            and
+                            services with our APIs.</p>
 
                         <div class="info-blocks-grid">
                             <div class="info-block">
@@ -131,8 +131,8 @@
                                         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                                     </svg>
                                 </div>
-                                <h4>API Status</h4>
-                                <p>Alle Systeme laufen im Normalbetrieb. Durchschnittliche Latenz: 42ms.</p>
+                                <h4>Getting Started</h4>
+                                <p>Register your enterprise account and obtain API access credentials securely.</p>
                             </div>
                             <div class="info-block">
                                 <div class="info-icon-container">
@@ -146,8 +146,8 @@
                                         <polyline points="10 9 9 9 8 9"></polyline>
                                     </svg>
                                 </div>
-                                <h4>Neue Spezifikationen</h4>
-                                <p>Die v2.4 der Schadens-API ist jetzt für EA-Partner verfügbar.</p>
+                                <h4>Browse API Catalog</h4>
+                                <p>Explore our collection of APIs to enhance your applications (Auth required).</p>
                             </div>
                         </div>
 
@@ -159,22 +159,18 @@
 
                     <aside class="dashboard-sidebar">
                         <div class="block glass">
-                            <h3>Key Metrics</h3>
-                            <div class="metric-row">
-                                <span>Requests (24h)</span>
-                                <strong>1.2M</strong>
-                            </div>
-                            <div class="metric-row">
-                                <span>Success Rate</span>
-                                <strong style="color:var(--color-success)">99.98%</strong>
-                            </div>
+                            <h3>About the Portal</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">This
+                                platform connects internal and external developers with our insurance APIs. We offer
+                                APIs for quotation, contract information, and self-services, prioritized for deep
+                                integration.</p>
                         </div>
                         <div class="block glass">
-                            <h3>Recent Updates</h3>
-                            <ul class="update-list">
-                                <li>OAuth 2.1 support added</li>
-                                <li>mTLS endpoint documentation</li>
-                                <li>New SDKs for Java/Python</li>
+                            <h3>Support</h3>
+                            <ul class="update-list" style="font-size: 0.9rem;">
+                                <li>Check our <a href="#" data-v1-view="faq"
+                                        style="color: var(--color-brand-secondary);">FAQ</a> for immediate help.</li>
+                                <li>Contact our team directly at:<br><strong>api@buendnis.de</strong></li>
                             </ul>
                         </div>
                     </aside>
@@ -185,38 +181,208 @@
             <div id="v1-view-docs" class="v1-view" style="display:none;">
                 <div class="v1-docs-layout glass">
                     <aside class="v1-docs-sidebar">
-                        <nav class="v1-docs-nav">
-                            <div class="nav-section-title">Getting Started</div>
-                            <a href="#" class="active" data-v1-sub="getting-started">Introduction</a>
-                            <a href="#" data-v1-sub="auth">Authentication</a>
-                            <div class="nav-section-title">Reference</div>
-                            <a href="#" data-v1-sub="api-ref">API Protocols</a>
-                            <a href="#" data-v1-sub="user-guide">Best Practices</a>
+                        <div class="docs-sidebar-header">
+                            <h3>Documentation</h3>
+                        </div>
+                        <nav class="v1-docs-nav accordion-nav">
+                            <div class="nav-group active">
+                                <button class="nav-group-toggle">
+                                    <span>GETTING STARTED</span>
+                                    <svg viewBox="0 0 24 24" fill="none" class="toggle-icon">
+                                        <path stroke="currentColor" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div class="nav-group-content" style="display:flex;">
+                                    <a href="#" class="active" data-v1-sub="getting-started">Introduction</a>
+                                    <a href="#" data-v1-sub="auth">Authentication</a>
+                                </div>
+                            </div>
+                            <div class="nav-group">
+                                <button class="nav-group-toggle">
+                                    <span>USER GUIDE</span>
+                                    <svg viewBox="0 0 24 24" fill="none" class="toggle-icon">
+                                        <path stroke="currentColor" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div class="nav-group-content" style="display:none;">
+                                    <a href="#" data-v1-sub="user-guide">User Guide</a>
+                                </div>
+                            </div>
+                            <div class="nav-group">
+                                <button class="nav-group-toggle">
+                                    <span>API</span>
+                                    <svg viewBox="0 0 24 24" fill="none" class="toggle-icon">
+                                        <path stroke="currentColor" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div class="nav-group-content" style="display:none;">
+                                    <a href="#" data-v1-sub="api-ref">API Fundamentals</a>
+                                </div>
+                            </div>
                         </nav>
                     </aside>
                     <main class="v1-docs-content">
                         <!-- Content via JS switch -->
                         <div id="v1-docs-getting-started" class="v1-docs-page">
-                            <h2>Introduction to Bündnis API</h2>
-                            <p>Our APIs are built with enterprise-grade security and developer efficiency in mind.
-                                Follow the structured guides below to integrate our services into your insurance
-                                workflow.</p>
-                            <div class="portal-alert info">
-                                <strong>Notice:</strong> Production access requires a signed Framework Agreement. Use
-                                the Sandbox for development and testing.
+                            <h2>Getting Started</h2>
+                            <p>After you as a partner have a valid contractual agreement with Bündnis, the named users
+                                can register for using the Marketplace and access the descriptions for the available
+                                APIs. After you have validated your email address and your user account is approved by
+                                the administrator, you should have access to all APIs for your business partnership with
+                                Bündnis.</p>
+                            <p class="portal-alert tip"><strong>Note:</strong> Please reach out via email in case of any
+                                uncertainty.</p>
+
+                            <h3>How to register</h3>
+                            <p>The following flow describes the process for registration and accessing our environment:
+                            </p>
+                            <div class="doc-illustration">
+                                <div class="custom-diagram registration-flow">
+                                    <div class="d-node primary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                                <circle cx="12" cy="7" r="4" />
+                                            </svg>
+                                        </div>
+                                        <span>Account<br>Registration</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                        <svg viewBox="0 0 24 24" fill="none" class="d-chevron" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="d-node secondary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path
+                                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                                </path>
+                                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                            </svg>
+                                        </div>
+                                        <span>Admin<br>Approval</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                        <svg viewBox="0 0 24 24" fill="none" class="d-chevron" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="d-node primary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                            </svg>
+                                        </div>
+                                        <span>API<br>Authorization</span>
+                                    </div>
+                                </div>
                             </div>
-                            <h3>Core Principles</h3>
-                            <ul class="check-list">
-                                <li><strong>RESTful Architecture</strong>: Standard HTTP methods and status codes.</li>
-                                <li><strong>JSON Format</strong>: Simplified data exchange for all endpoints.</li>
-                                <li><strong>Security First</strong>: mTLS and OAuth 2.1 by default.</li>
-                            </ul>
+
+                            <div class="steps-container">
+                                <div class="step-item" data-step="1">
+                                    <div class="step-content">
+                                        <h4>Account Registration</h4>
+                                        <p>Register for a developer account using your enterprise email. Validate your
+                                            email address to initiate the process.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item" data-step="2">
+                                    <div class="step-content">
+                                        <h4>Administrator Approval</h4>
+                                        <p>Your user account will be reviewed and approved by the administrator before
+                                            you can proceed.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item" data-step="3">
+                                    <div class="step-content">
+                                        <h4>API Authorization</h4>
+                                        <p>Once approved, you will be granted access to the specific APIs tied to your
+                                            business partnership agreement.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div id="v1-docs-auth" class="v1-docs-page" style="display:none;">
-                            <h2>Authentication & Security</h2>
-                            <p>We use OAuth 2.1 for authorization. To access our APIs, you must first obtain a client
-                                token.</p>
+                            <h2>Accessing an API</h2>
+                            <p>This describes how an API can be accessed by authenticating and getting an API access
+                                token to consume an API. Detailed information about specific endpoints and how
+                                authentication information has to be handed, will be provided directly to the partner or
+                                is described in addition to each API in the catalog.</p>
+
+                            <h3>Security Patterns For Partner Integration</h3>
+                            <div class="doc-illustration">
+                                <div class="custom-diagram security-flow">
+                                    <div class="d-node primary tooltip" data-tooltip="Client requests token">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="M12 16v-4" />
+                                                <path d="M12 8h.01" />
+                                            </svg>
+                                        </div>
+                                        <span>OAuth 2.1<br>Request</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                        <svg viewBox="0 0 24 24" fill="none" class="d-chevron" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="d-node secondary tooltip" data-tooltip="Identity validated">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                                <polyline points="22 4 12 14.01 9 11.01" />
+                                            </svg>
+                                        </div>
+                                        <span>Client<br>Verification</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                        <svg viewBox="0 0 24 24" fill="none" class="d-chevron" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="d-node primary tooltip" data-tooltip="Mutual TLS connection">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                            </svg>
+                                        </div>
+                                        <span>mTLS<br>Handshake</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                        <svg viewBox="0 0 24 24" fill="none" class="d-chevron" stroke="currentColor"
+                                            stroke-width="2">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="d-node secondary tooltip" data-tooltip="Secure access granted">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                                <polyline points="2 17 12 22 22 17" />
+                                                <polyline points="2 12 12 17 22 12" />
+                                            </svg>
+                                        </div>
+                                        <span>API<br>Gateway</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>We use OAuth 2.1 for authorization and mTLS for transport layer security. To access our
+                                APIs, you must first obtain a client token.</p>
                             <div class="code-block">
                                 <div class="code-block-header">Token Request Example</div>
                                 <pre><code>curl -X POST https://api.buendnis.de/v1/oauth/token \
@@ -226,41 +392,319 @@
                         </div>
 
                         <div id="v1-docs-api-ref" class="v1-docs-page" style="display:none;">
-                            <h2>API Protocols & Versioning</h2>
-                            <p>All APIs are versioned to ensure backward compatibility. Use the version prefix in the
-                                URL (e.g., /v1/).</p>
+                            <h2>API Fundamentals</h2>
+
+                            <h3>What is an API?</h3>
+                            <p>API is an acronym for Application Programming Interface. An API is a tool that allows
+                                applications to communicate with each other. The API operating principle is very simple.
+                                An application sends data (known as a request) to a server. The server processes this
+                                information and sends back a response. The application then interprets that data and
+                                presents it in a readable way.</p>
+                            <p>The response usually comes in JSON format. JSON is an open standard data format that is
+                                lightweight and human-readable.</p>
+
+                            <div class="doc-illustration">
+                                <div class="custom-diagram architecture-flow">
+                                    <div class="d-node primary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                                <line x1="8" y1="21" x2="16" y2="21" />
+                                                <line x1="12" y1="17" x2="12" y2="21" />
+                                            </svg>
+                                        </div>
+                                        <span>Client<br>App</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                    </div>
+                                    <div class="d-node secondary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                            </svg>
+                                        </div>
+                                        <span>API<br>Gateway</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                    </div>
+                                    <div class="d-node primary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                                <polyline points="2 17 12 22 22 17" />
+                                                <polyline points="2 12 12 17 22 12" />
+                                            </svg>
+                                        </div>
+                                        <span>Micro-<br>service</span>
+                                    </div>
+                                    <div class="d-arrow animated-arrow">
+                                        <div class="d-line"></div>
+                                    </div>
+                                    <div class="d-node secondary">
+                                        <div class="d-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                                            </svg>
+                                        </div>
+                                        <span>Database</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>What is REST?</h3>
+                            <p>REST (Representational State Transfer) is a set of web API architecture principles, or
+                                constraints, that dictate how web service applications communicate over the internet.
+                                For this purpose, REST API uses the HTTP protocol between client and host server at a
+                                predefined set of URLs.</p>
+
+                            <div class="api-info-grid">
+                                <div class="api-info-card">
+                                    <h4>Request Structure</h4>
+                                    <ul style="padding-left:1.5rem; font-size:0.85rem; color:var(--color-text-muted)">
+                                        <li><strong>Method:</strong> HTTP verbs (GET, PUT, POST, etc.)</li>
+                                        <li><strong>URL:</strong> resource and parameters</li>
+                                        <li><strong>Headers:</strong> meta-data of the request</li>
+                                        <li><strong>Body:</strong> content of the request</li>
+                                    </ul>
+                                </div>
+                                <div class="api-info-card">
+                                    <h4>Response Structure</h4>
+                                    <ul style="padding-left:1.5rem; font-size:0.85rem; color:var(--color-text-muted)">
+                                        <li><strong>Status Code:</strong> HTTP response code</li>
+                                        <li><strong>Headers:</strong> meta-data of the response</li>
+                                        <li><strong>Body:</strong> content of the response</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3>HTTP Verbs</h3>
                             <div class="table-container">
                                 <table class="v1-table">
                                     <thead>
                                         <tr>
-                                            <th>Method</th>
-                                            <th>Endpoint</th>
+                                            <th>Verb</th>
                                             <th>Description</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td><span class="method-badge get">GET</span></td>
-                                            <td>/claims</td>
-                                            <td>List all insurance claims</td>
+                                            <td>Used to read (retrieve) data on the server.</td>
                                         </tr>
                                         <tr>
                                             <td><span class="method-badge post">POST</span></td>
-                                            <td>/policy/create</td>
-                                            <td>Create a new insurance policy</td>
+                                            <td>Used to create data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="method-badge patch" style="background:#8b5cf6">PUT</span>
+                                            </td>
+                                            <td>Used to update data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="method-badge delete"
+                                                    style="background:#ef4444">DELETE</span></td>
+                                            <td>Used to delete data.</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+
+                            <h3>URL Structure</h3>
+                            <p>All Bündnis API requests follow a predictable pattern:</p>
+                            <div class="url-illustration">
+                                <span class="url-part base" data-label="Base Host">https://api.buendnis.de</span>
+                                <span class="url-part version" data-label="Version">/v1</span>
+                                <span class="url-part resource" data-label="Resource">/claims</span>
+                                <span class="url-part param" data-label="Query Param">?status=open</span>
+                            </div>
+
+                            <h3>Response Codes</h3>
+                            <p>HTTP status codes are grouped into classes (1xx to 5xx). The most common responses are:
+                            </p>
+                            <div class="table-container">
+                                <table class="v1-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Status</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>200</strong></td>
+                                            <td>OK</td>
+                                            <td>The request has succeeded</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>201</strong></td>
+                                            <td>Created</td>
+                                            <td>The request has been fulfilled and resulted in a new resource being
+                                                created</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>400</strong></td>
+                                            <td>Bad Request</td>
+                                            <td>The request could not be understood due to incorrect syntax</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>401</strong></td>
+                                            <td>Unauthorized</td>
+                                            <td>The request requires user authentication</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>403</strong></td>
+                                            <td>Forbidden</td>
+                                            <td>The client does not have access rights to the content</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>404</strong></td>
+                                            <td>Not Found</td>
+                                            <td>The server has not found anything matching the Request-URI</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>429</strong></td>
+                                            <td>Too Many Requests</td>
+                                            <td>The user has sent too many requests in a given amount of time ("rate
+                                                limiting")</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>500</strong></td>
+                                            <td>Internal Server Error</td>
+                                            <td>The server encountered an unexpected condition</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>503</strong></td>
+                                            <td>Service Unavailable</td>
+                                            <td>The server is currently unable to handle the request</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3>Glossary</h3>
+                            <div class="table-container">
+                                <table class="v1-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Term</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Analytics</strong></td>
+                                            <td>Metrics and insights provided to API consumers to monitor usage.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>API Consumer</strong></td>
+                                            <td>Developers or software applications that utilize APIs.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>API Gateway</strong></td>
+                                            <td>Exposes enterprise service APIs for external consumption and manages
+                                                access points.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Authentication</strong></td>
+                                            <td>The verification process to confirm the identity and permissions of a
+                                                user.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Endpoint</strong></td>
+                                            <td>A specific URL within an API that represents a resource or a specific
+                                                functionality.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Rate Limiting</strong></td>
+                                            <td>A technique to control the number of API requests a user can make within
+                                                a specified timeframe.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>SDK</strong></td>
+                                            <td>Software Development Kit; tools, libraries, and documentation that
+                                                facilitate API integration.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Testing Sandbox</strong></td>
+                                            <td>A controlled environment allowing developers to test without impacting
+                                                production.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h3>Frontend Integration</h3>
+                            <p>To reduce complexity for our business partners, we offer ready-made frontend solutions
+                                alongside our APIs. These provide a seamless user experience while minimizing your
+                                development effort.</p>
+
+                            <div class="api-info-grid" style="margin-top: 2rem;">
+                                <div class="api-info-card">
+                                    <h4>Web Components</h4>
+                                    <p style="font-size:0.85rem; color:var(--color-text-muted)">Offers a seamless,
+                                        native-feeling User Experience deeply integrated into your frontend flow.</p>
+                                </div>
+                                <div class="api-info-card">
+                                    <h4>iFrames</h4>
+                                    <p style="font-size:0.85rem; color:var(--color-text-muted)">Provides an isolated and
+                                        highly secure integration method, ideal for sensitive data flows.</p>
+                                </div>
+                                <div class="api-info-card">
+                                    <h4>Linkout</h4>
+                                    <p style="font-size:0.85rem; color:var(--color-text-muted)">The most technically
+                                        simple integration. Redirects users to an Allianz-hosted portal securely.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div id="v1-docs-user-guide" class="v1-docs-page" style="display:none;">
-                            <h2>Best Practices</h2>
-                            <p>To optimize your integration, please follow these industry-standard best practices.</p>
-                            <ul>
-                                <li>Implement exponential backoff for rate-limited requests.</li>
-                                <li>Cache frequently accessed metadata like policy types.</li>
-                                <li>Use the test environment for all initial development.</li>
+                            <h2>User Guide</h2>
+                            <p>Navigating the API catalog and documentation.</p>
+
+                            <h3>View of unauthorized user</h3>
+                            <ul class="check-list">
+                                <li><strong>Step 1:</strong> Start on the Homepage.</li>
+                                <li><strong>Step 2:</strong> Click on API Catalog.</li>
+                                <li><strong>Step 3:</strong> The API catalog is only visible for authorized users.</li>
+                            </ul>
+
+                            <h3>Sign in and sign up</h3>
+                            <ul class="check-list">
+                                <li><strong>Step 4:</strong> Click on log in.</li>
+                                <li><strong>Step 5:</strong> Here you can see the log in mask. Enter credentials or sign
+                                    up.</li>
+                                <li><strong>Step 6:</strong> If you do not have credentials yet, click on Create an
+                                    account.</li>
+                                <li><strong>Step 7:</strong> Type in your sign up credentials and click on Sign up.</li>
+                                <li><strong>Step 8:</strong> Set up your authenticator app for MFA. Your registration
+                                    will be activated after a review from the admin.</li>
+                                <li><strong>Step 9:</strong> Type in your log in credentials and click sign in.</li>
+                                <li><strong>Step 10:</strong> Enter the code from your authenticator app.</li>
+                            </ul>
+
+                            <h3>View of the authorized user</h3>
+                            <ul class="check-list">
+                                <li><strong>Step 11:</strong> You will be redirected to the homepage. Click on API
+                                    catalog to see all APIs that belong to your settings.</li>
+                                <li><strong>Step 12:</strong> You can click on Demo for example and filter your APIs.
+                                </li>
+                                <li><strong>Step 14:</strong> Click on API DOCUMENTATION.</li>
+                                <li><strong>Step 15:</strong> Here, you can find the API description expanded and see
+                                    the full specification of the current version.</li>
+                            </ul>
+
+                            <h3>Access to documentation and further functions</h3>
+                            <ul class="check-list">
+                                <li><strong>Step 17:</strong> Click on Documentation to build a common consensus of
+                                    terms.</li>
+                                <li><strong>Step 21:</strong> Click on FAQs to find frequently asked questions.</li>
+                                <li><strong>Step 23:</strong> For any individual purpose don't hesitate to contact us.
+                                </li>
                             </ul>
                         </div>
                     </main>
@@ -315,11 +759,11 @@
             <!-- FAQ -->
             <div id="v1-view-faq" class="v1-view" style="display:none;">
                 <div class="faq-page">
-                    <h2>Häufig gestellte Fragen (Support)</h2>
+                    <h2>Frequently Asked Questions</h2>
                     <div class="v1-faq-list">
                         <div class="faq-item glass">
                             <button class="faq-question">
-                                <span>Wie erhalte ich einen Business Account?</span>
+                                <span>What is the API Marketplace?</span>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                     class="faq-toggle-icon">
@@ -327,12 +771,73 @@
                                 </svg>
                             </button>
                             <div class="faq-answer">
-                                <p>Business Accounts werden nach einer Identitätsprüfung Ihres Unternehmens
-                                    freigeschaltet. Kontaktieren Sie dazu bitte Ihren Bündnis-Berater oder registrieren
-                                    Sie sich über das Kontaktformular.</p>
+                                <p>The API Marketplace is a dedicated platform connecting internal and external
+                                    developers with our insurance APIs. Here you can explore our API catalog, find
+                                    integration documentation, and manage your API access.</p>
                             </div>
                         </div>
-                        <!-- ... other FAQs ... -->
+
+                        <div class="faq-item glass">
+                            <button class="faq-question">
+                                <span>Who can use the APIs?</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="faq-toggle-icon">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Usage is currently limited to contracted business partners. You must have a valid
+                                    contractual agreement with Bündnis to register for an account and access the
+                                    specifications.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass">
+                            <button class="faq-question">
+                                <span>Are there usage fees?</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="faq-toggle-icon">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Currently, there are no direct usage fees for integrating our APIs. However, usage is
+                                    controlled via quotas and rate limits defined in your partnership agreement.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass">
+                            <button class="faq-question">
+                                <span>How is access secured?</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="faq-toggle-icon">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Access is strictly secured using standard patterns, including API Keys/Secrets and
+                                    OAuth 2.0. We also mandate Multi-Factor Authentication (MFA) for the portal login.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item glass">
+                            <button class="faq-question">
+                                <span>Can I test the APIs in a Sandbox?</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="faq-toggle-icon">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Dedicated API testing and sandboxes are currently planned for future release. Sample
+                                    projects and tutorials are also in development to aid your integration.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

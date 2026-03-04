@@ -1,0 +1,70 @@
+DOCUMENTATION IMPROVEMENTS — STATUS REPORT
+============================================
+
+WHAT I'VE DONE SO FAR
+---------------------
+
+1. CSS: New Documentation Components (portal.css)
+   - Annotated URL Illustration: color-coded URL parts (Base, Version, Resource, Param)
+   - Step-by-Step Flow: numbered vertical timeline with circular badges
+   - Enhanced Alerts: .tip, .warning, .success variants
+   - API Info Cards: grid layout for key-value concepts
+   - Doc Illustration Container: responsive image wrapper
+   - Responsive sidebar fix: stacks on mobile
+
+2. HTML: Updated Documentation Content (index.html)
+   - Getting Started: Replaced with 4-step onboarding flow + tip alert + illustration
+   - Authentication: Added security/mTLS illustration
+   - API Protocols: Added annotated URL diagram, Core Headers cards, expanded Status Codes table (200, 401, 403, 429)
+   - Best Practices: Added Performance Optimization checklist, Error Handling section with code block
+
+3. Generated Illustrations (2 of 3)
+   - Registration flow (glassmorphic, Allianz colors)
+   - Security/mTLS (padlocks, shields, data streams)
+
+
+WHAT STILL NEEDS TO BE DONE
+----------------------------
+
+1. NAVIGATION REDESIGN
+   Current: simple flat list in a sidebar
+   Allianz uses: hierarchical accordion-style sidebar with:
+     - "Documentation" heading above all items
+     - Bold uppercase section headers (GETTING STARTED, USER GUIDE, API)
+     - Indented sub-links under the active section
+     - Left blue border on active section
+     - Sticky sidebar when scrolling
+
+2. GETTING STARTED — missing content:
+   - "How to register" full text with registration flow description
+   - "Accessing an API" section about auth tokens and security patterns
+
+3. USER GUIDE — not started, needs full sections:
+   - "View of unauthorized user" (Step 1: Homepage, Step 2: API Catalog)
+   - "Sign in and sign up"
+   - "View of the authorized user"
+   - "Access to documentation and further functions"
+
+4. API PAGE — needs full content:
+   - "What is an API / REST" educational content
+   - HTTP verbs table
+   - URL structure diagram (already have annotated URL component)
+   - Response codes reference
+   - Glossary
+
+5. ILLUSTRATION for API page
+   - Need to generate one more visual for the API section
+
+
+SUMMARY TABLE
+-------------
+Area                        Status
+--------------------------  ----------------------
+CSS components              DONE
+Getting Started content     PARTIAL (needs reg flow text)
+Authentication content      DONE
+API Protocols content       PARTIAL (needs REST education)
+Best Practices content      DONE
+User Guide content          NOT STARTED
+Navigation redesign         NOT STARTED
+Illustrations               2 of 3 done
