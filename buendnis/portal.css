@@ -1320,7 +1320,21 @@ a:hover {
    UTILITIES
    ============================================================ */
 .auth-only {
-    display: none;
+    display: none !important;
+}
+
+body.authenticated .auth-only {
+    display: revert !important;
+}
+
+/* Toolbar needs flex specifically */
+body.authenticated .drupal-toolbar.auth-only {
+    display: flex !important;
+}
+
+/* Navbar links need flex specifically to align correctly */
+body.authenticated .v1-nav-links a.auth-only {
+    display: flex !important;
 }
 
 .glass {
@@ -1677,4 +1691,422 @@ a:hover {
 .d-node.tooltip:hover::before {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+}
+
+/* ======================================================
+   LANDING PAGE — Interactive Insurance Policy Cards
+   ====================================================== */
+
+/* --- Particle Canvas --- */
+.landing-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#v1-view-home {
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Shield Hero --- */
+.landing-hero-section {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.shield-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.shield-svg {
+    animation: shield-float 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 20px rgba(0, 163, 224, 0.3));
+}
+
+@keyframes shield-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.shield-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(0, 163, 224, 0.15) 0%, transparent 70%);
+    animation: pulse-ring 2.5s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+.landing-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #003781 0%, #00A3E0 50%, #003781 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.landing-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Policy Desk (Card Container) --- */
+.policy-desk {
+    display: flex;
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 2rem auto 4rem;
+    perspective: 1200px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Policy Card Wrapper (3D Container) --- */
+.policy-card-wrapper {
+    flex: 1;
+    min-width: 340px;
+    max-width: 440px;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease,
+        filter 0.4s ease;
+}
+
+.policy-card-wrapper.dimmed {
+    opacity: 0.3;
+    filter: blur(2px) grayscale(0.5);
+    pointer-events: none;
+    transform: scale(0.92);
+}
+
+/* --- 3D Flip Card --- */
+.policy-card {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.policy-card-wrapper.flipped .policy-card {
+    transform: rotateY(180deg);
+}
+
+.policy-front,
+.policy-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* --- Front Face --- */
+.policy-front {
+    background: linear-gradient(145deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+    border: 1px solid rgba(0, 55, 129, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 55, 129, 0.04);
+    transition: box-shadow 0.3s ease;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.policy-card-wrapper.flipped .policy-front {
+    pointer-events: none;
+    z-index: 1;
+}
+
+[data-theme='dark'] .policy-front {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.policy-card-wrapper:hover .policy-front {
+    box-shadow: 0 16px 48px rgba(0, 55, 129, 0.12), 0 0 0 1px rgba(0, 163, 224, 0.15);
+}
+
+/* --- Holographic Sheen --- */
+.policy-hologram {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(125deg,
+            transparent 0%,
+            rgba(0, 163, 224, 0.04) 25%,
+            rgba(0, 55, 129, 0.06) 50%,
+            rgba(0, 163, 224, 0.04) 75%,
+            transparent 100%);
+    background-size: 300% 300%;
+    animation: hologram-sweep 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes hologram-sweep {
+    0% {
+        background-position: 100% 100%;
+    }
+
+    50% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* --- Card Header --- */
+.policy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.policy-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+}
+
+.policy-number {
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+}
+
+/* --- Card Body --- */
+.policy-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.policy-icon-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.policy-icon-circle.dev {
+    background: linear-gradient(135deg, rgba(0, 163, 224, 0.12), rgba(0, 163, 224, 0.03));
+    color: #00A3E0;
+    box-shadow: 0 4px 16px rgba(0, 163, 224, 0.1);
+}
+
+.policy-icon-circle.biz {
+    background: linear-gradient(135deg, rgba(0, 55, 129, 0.12), rgba(0, 55, 129, 0.03));
+    color: #003781;
+    box-shadow: 0 4px 16px rgba(0, 55, 129, 0.1);
+}
+
+.policy-card-wrapper:hover .policy-icon-circle {
+    transform: scale(1.1);
+}
+
+.policy-body h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.policy-body p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* --- Card Footer --- */
+.policy-footer {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.policy-cta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #00A3E0;
+    letter-spacing: 0.05em;
+    transition: letter-spacing 0.3s ease;
+}
+
+.policy-card-wrapper:hover .policy-cta {
+    letter-spacing: 0.12em;
+}
+
+/* --- Stamp Watermark --- */
+.policy-stamp {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    opacity: 0.08;
+    z-index: 0;
+}
+
+/* --- Back Face --- */
+.policy-back {
+    transform: rotateY(180deg) translateZ(1px);
+    background: linear-gradient(145deg, #003781, #004a9e);
+    color: #fff !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    box-shadow: 0 16px 48px rgba(0, 55, 129, 0.3);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.policy-card-wrapper.flipped .policy-back {
+    pointer-events: auto;
+    z-index: 5;
+}
+
+.policy-back h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
+}
+
+.policy-back p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    color: #fff !important;
+}
+
+.policy-back-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 260px;
+}
+
+.policy-back-actions .btn {
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.policy-back-actions .btn-buendnis-primary {
+    background: #fff;
+    color: #003781;
+    border-color: #fff;
+}
+
+.policy-back-actions .btn-buendnis-primary:hover {
+    background: #e8f4fd;
+}
+
+.policy-back-actions .btn-buendnis-outline {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.policy-back-actions .btn-buendnis-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* --- Page Header tweaks --- */
+.page-header-bg {
+    padding-bottom: 1.5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .landing-hero-section {
+        padding: 2.5rem 1rem 1.5rem;
+    }
+
+    .policy-desk {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .policy-card-wrapper {
+        min-width: 100%;
+    }
+
+    .policy-card {
+        height: 380px;
+    }
 }

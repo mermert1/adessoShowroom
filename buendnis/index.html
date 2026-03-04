@@ -12,7 +12,7 @@
 
 <body class="drupal-business">
     <!-- Drupal Toolbar (Mock Admin Bar) -->
-    <div class="drupal-toolbar">
+    <div class="drupal-toolbar auth-only" style="display:none;">
         <div class="toolbar-container">
             <div class="toolbar-brand">
                 <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
@@ -98,14 +98,6 @@
                 <a href="#" data-v1-view="home">Home</a> / <span>Developer Portal</span>
             </nav>
             <h1 class="page-title">Developer Portal <span class="badge status-verified">Enterprise</span></h1>
-
-            <!-- Drupal Tasks Tabs -->
-            <nav class="drupal-tabs">
-                <a href="#" class="active" data-v1-view="home">Overview</a>
-                <a href="#" data-v1-view="docs">Documentation</a>
-                <a href="#" data-v1-view="api" class="auth-only" style="display:none;">API Catalog</a>
-                <a href="#" data-v1-view="faq">FAQ</a>
-            </nav>
         </div>
     </div>
 
@@ -115,65 +107,124 @@
 
             <!-- Dashboard Overiew -->
             <div id="v1-view-home" class="v1-view visible">
-                <div class="business-dashboard-grid">
-                    <div class="dashboard-main glass">
-                        <h2>APIS THAT SECURE YOUR FUTURE</h2>
-                        <p>Discover endless possibilities with our API Marketplace and explore the world of insurance
-                            and
-                            services with our APIs.</p>
+                <!-- Animated particle canvas background -->
+                <canvas id="landing-particles" class="landing-particles"></canvas>
 
-                        <div class="info-blocks-grid">
-                            <div class="info-block">
-                                <div class="info-icon-container">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="info-svg">
-                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                <!-- Shield Hero -->
+                <div class="landing-hero-section">
+                    <div class="shield-icon-wrapper">
+                        <svg class="shield-svg" width="72" height="72" viewBox="0 0 24 24" fill="none"
+                            stroke="url(#shieldGrad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <defs>
+                                <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#003781" />
+                                    <stop offset="100%" stop-color="#00A3E0" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <div class="shield-pulse"></div>
+                    </div>
+                    <h2 class="landing-title">Choose Your Coverage</h2>
+                    <p class="landing-subtitle">Select your policy below to unlock the tools and resources that fit your
+                        role.</p>
+                </div>
+
+                <!-- Interactive Policy Cards -->
+                <div class="policy-desk">
+                    <!-- Developer Policy -->
+                    <div class="policy-card-wrapper" id="policy-dev">
+                        <div class="policy-card">
+                            <div class="policy-front">
+                                <div class="policy-hologram"></div>
+                                <div class="policy-header">
+                                    <span class="policy-label">POLICY</span>
+                                    <span class="policy-number">#DEV-2026</span>
+                                </div>
+                                <div class="policy-body">
+                                    <div class="policy-icon-circle dev">
+                                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="16 18 22 12 16 6"></polyline>
+                                            <polyline points="8 6 2 12 8 18"></polyline>
+                                        </svg>
+                                    </div>
+                                    <h3>Developer Coverage</h3>
+                                    <p>Full access to API documentation, sandbox environments, and technical integration
+                                        guides.</p>
+                                </div>
+                                <div class="policy-footer">
+                                    <span class="policy-cta">Click to activate ↗</span>
+                                </div>
+                                <div class="policy-stamp">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1" opacity="0.15">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                     </svg>
                                 </div>
-                                <h4>Getting Started</h4>
-                                <p>Register your enterprise account and obtain API access credentials securely.</p>
                             </div>
-                            <div class="info-block">
-                                <div class="info-icon-container">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="info-svg">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                        <polyline points="14 2 14 8 20 8"></polyline>
-                                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                                        <polyline points="10 9 9 9 8 9"></polyline>
-                                    </svg>
+                            <div class="policy-back">
+                                <h3>Developer Tools</h3>
+                                <p>Your policy is active. Select a service:</p>
+                                <div class="policy-back-actions">
+                                    <button class="btn btn-buendnis-primary btn-block" data-v1-view="docs">📄 Read the
+                                        Docs</button>
+                                    <button class="btn btn-buendnis-outline btn-block"
+                                        onclick="document.getElementById('btn-v1-login').click();">🔑 Browse
+                                        APIs</button>
+                                    <button class="btn btn-buendnis-outline btn-block policy-back-btn">← Back</button>
                                 </div>
-                                <h4>Browse API Catalog</h4>
-                                <p>Explore our collection of APIs to enhance your applications (Auth required).</p>
                             </div>
-                        </div>
-
-                        <div class="dashboard-cta">
-                            <button class="btn btn-buendnis-primary" data-v1-view="docs">Dokumentation starten</button>
-                            <button class="btn btn-buendnis-outline" id="btn-v1-cta-login">Sandbox anfordern</button>
                         </div>
                     </div>
 
-                    <aside class="dashboard-sidebar">
-                        <div class="block glass">
-                            <h3>About the Portal</h3>
-                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5;">This
-                                platform connects internal and external developers with our insurance APIs. We offer
-                                APIs for quotation, contract information, and self-services, prioritized for deep
-                                integration.</p>
+                    <!-- Business Policy -->
+                    <div class="policy-card-wrapper" id="policy-biz">
+                        <div class="policy-card">
+                            <div class="policy-front">
+                                <div class="policy-hologram"></div>
+                                <div class="policy-header">
+                                    <span class="policy-label">POLICY</span>
+                                    <span class="policy-number">#BIZ-2026</span>
+                                </div>
+                                <div class="policy-body">
+                                    <div class="policy-icon-circle biz">
+                                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                        </svg>
+                                    </div>
+                                    <h3>Business Coverage</h3>
+                                    <p>Explore digital products, partnership opportunities, and enterprise API
+                                        solutions.</p>
+                                </div>
+                                <div class="policy-footer">
+                                    <span class="policy-cta">Click to activate ↗</span>
+                                </div>
+                                <div class="policy-stamp">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1" opacity="0.15">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="policy-back">
+                                <h3>Business Resources</h3>
+                                <p>Your policy is active. Select a service:</p>
+                                <div class="policy-back-actions">
+                                    <button class="btn btn-buendnis-primary btn-block" data-v1-view="faq">❓ Explore
+                                        FAQ</button>
+                                    <button class="btn btn-buendnis-outline btn-block"
+                                        onclick="window.location.href='mailto:api@buendnis.de'">✉️ Contact
+                                        Sales</button>
+                                    <button class="btn btn-buendnis-outline btn-block policy-back-btn">← Back</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="block glass">
-                            <h3>Support</h3>
-                            <ul class="update-list" style="font-size: 0.9rem;">
-                                <li>Check our <a href="#" data-v1-view="faq"
-                                        style="color: var(--color-brand-secondary);">FAQ</a> for immediate help.</li>
-                                <li>Contact our team directly at:<br><strong>api@buendnis.de</strong></li>
-                            </ul>
-                        </div>
-                    </aside>
+                    </div>
                 </div>
             </div>
 
@@ -195,17 +246,6 @@
                                 <div class="nav-group-content" style="display:flex;">
                                     <a href="#" class="active" data-v1-sub="getting-started">Introduction</a>
                                     <a href="#" data-v1-sub="auth">Authentication</a>
-                                </div>
-                            </div>
-                            <div class="nav-group">
-                                <button class="nav-group-toggle">
-                                    <span>USER GUIDE</span>
-                                    <svg viewBox="0 0 24 24" fill="none" class="toggle-icon">
-                                        <path stroke="currentColor" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
-                                <div class="nav-group-content" style="display:none;">
-                                    <a href="#" data-v1-sub="user-guide">User Guide</a>
                                 </div>
                             </div>
                             <div class="nav-group">
@@ -662,51 +702,7 @@
                             </div>
                         </div>
 
-                        <div id="v1-docs-user-guide" class="v1-docs-page" style="display:none;">
-                            <h2>User Guide</h2>
-                            <p>Navigating the API catalog and documentation.</p>
 
-                            <h3>View of unauthorized user</h3>
-                            <ul class="check-list">
-                                <li><strong>Step 1:</strong> Start on the Homepage.</li>
-                                <li><strong>Step 2:</strong> Click on API Catalog.</li>
-                                <li><strong>Step 3:</strong> The API catalog is only visible for authorized users.</li>
-                            </ul>
-
-                            <h3>Sign in and sign up</h3>
-                            <ul class="check-list">
-                                <li><strong>Step 4:</strong> Click on log in.</li>
-                                <li><strong>Step 5:</strong> Here you can see the log in mask. Enter credentials or sign
-                                    up.</li>
-                                <li><strong>Step 6:</strong> If you do not have credentials yet, click on Create an
-                                    account.</li>
-                                <li><strong>Step 7:</strong> Type in your sign up credentials and click on Sign up.</li>
-                                <li><strong>Step 8:</strong> Set up your authenticator app for MFA. Your registration
-                                    will be activated after a review from the admin.</li>
-                                <li><strong>Step 9:</strong> Type in your log in credentials and click sign in.</li>
-                                <li><strong>Step 10:</strong> Enter the code from your authenticator app.</li>
-                            </ul>
-
-                            <h3>View of the authorized user</h3>
-                            <ul class="check-list">
-                                <li><strong>Step 11:</strong> You will be redirected to the homepage. Click on API
-                                    catalog to see all APIs that belong to your settings.</li>
-                                <li><strong>Step 12:</strong> You can click on Demo for example and filter your APIs.
-                                </li>
-                                <li><strong>Step 14:</strong> Click on API DOCUMENTATION.</li>
-                                <li><strong>Step 15:</strong> Here, you can find the API description expanded and see
-                                    the full specification of the current version.</li>
-                            </ul>
-
-                            <h3>Access to documentation and further functions</h3>
-                            <ul class="check-list">
-                                <li><strong>Step 17:</strong> Click on Documentation to build a common consensus of
-                                    terms.</li>
-                                <li><strong>Step 21:</strong> Click on FAQs to find frequently asked questions.</li>
-                                <li><strong>Step 23:</strong> For any individual purpose don't hesitate to contact us.
-                                </li>
-                            </ul>
-                        </div>
                     </main>
                 </div>
             </div>

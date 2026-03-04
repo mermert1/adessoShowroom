@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const target = document.getElementById('v1-view-' + viewName);
         if (target) {
-            target.style.display = 'block';
+            target.style.display = 'flex';
         }
 
         // Sync main navigation
@@ -60,10 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             a.classList.toggle('active', a.getAttribute('data-v1-view') === viewName);
         });
 
-        // Sync Drupal tabs
-        document.querySelectorAll('.drupal-tabs a').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('data-v1-view') === viewName);
-        });
     }
 
     // --- Docs Sub-Page Switching ---
@@ -71,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.v1-docs-page').forEach(p => p.style.display = 'none');
         const target = document.getElementById('v1-docs-' + pageName);
         if (target) target.style.display = 'block';
-        
+
         document.querySelectorAll('.v1-docs-nav a').forEach(a => {
             const isActive = a.getAttribute('data-v1-sub') === pageName;
             a.classList.toggle('active', isActive);
-            
+
             // Expand parent accordion group if active
             if (isActive) {
                 const parentGroup = a.closest('.nav-group');
@@ -86,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const content = other.querySelector('.nav-group-content');
                         if (content) content.style.display = 'none';
                     });
-                    
+
                     parentGroup.classList.add('active');
                     const content = parentGroup.querySelector('.nav-group-content');
                     if (content) content.style.display = 'flex';
@@ -120,8 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSubmitLogin = document.getElementById('btn-portal-submit-login');
     let portalAuthenticated = false;
 
-    // Initial auth check to hide elements for guests
-    document.querySelectorAll('.auth-only').forEach(el => el.style.display = 'none');
+    // Initial auth check — body class controls visibility via CSS
+    document.body.classList.remove('authenticated');
 
     function openModal(e) {
         if (e) e.preventDefault();
@@ -146,8 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         portalAuthenticated = true;
         closeModal();
 
-        // Reveal auth-only elements (use '' to not override CSS display)
-        document.querySelectorAll('.auth-only').forEach(el => el.style.display = '');
+        // Reveal auth-only elements via body class
+        document.body.classList.add('authenticated');
 
         // Update auth section
         const v1AuthSection = document.getElementById('v1-auth-section');
@@ -167,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function doLogout() {
         portalAuthenticated = false;
-        document.querySelectorAll('.auth-only').forEach(el => el.style.display = 'none');
+        document.body.classList.remove('authenticated');
 
         const v1AuthSection = document.getElementById('v1-auth-section');
         if (v1AuthSection) {
@@ -190,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (toggleBtn) {
             toggleBtn.addEventListener('click', () => {
                 const isActive = group.classList.contains('active');
-                
+
                 // Close all other groups
                 docsNavGroups.forEach(otherItem => {
                     otherItem.classList.remove('active');
@@ -258,4 +254,108 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
     }, 100);
+
+    // --- Interactive Policy Cards ---
+    const policyWrappers = document.querySelectorAll('.policy-card-wrapper');
+
+    policyWrappers.forEach(wrapper => {
+        const front = wrapper.querySelector('.policy-front');
+        const backBtn = wrapper.querySelector('.policy-back-btn');
+        const backActions = wrapper.querySelectorAll('.policy-back-actions .btn:not(.policy-back-btn)');
+
+        // Click front to flip
+        if (front) {
+            front.addEventListener('click', () => {
+                wrapper.classList.add('flipped');
+                policyWrappers.forEach(other => {
+                    if (other !== wrapper) other.classList.add('dimmed');
+                });
+            });
+        }
+
+        // Back button to unflip
+        if (backBtn) {
+            backBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                wrapper.classList.remove('flipped');
+                policyWrappers.forEach(other => other.classList.remove('dimmed'));
+            });
+        }
+
+        // Action buttons on back — directly trigger view switch
+        backActions.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Reset all cards
+                policyWrappers.forEach(w => w.classList.remove('flipped', 'dimmed'));
+                // Handle view navigation
+                const viewTarget = btn.getAttribute('data-v1-view');
+                if (viewTarget) {
+                    switchV1View(viewTarget);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                // Handle onclick attributes (Browse APIs, Contact Sales)
+                const onclickAttr = btn.getAttribute('onclick');
+                if (onclickAttr) {
+                    new Function(onclickAttr)();
+                }
+            });
+        });
+    });
+
+    // --- Floating Particle Canvas ---
+    const canvas = document.getElementById('landing-particles');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 35;
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 40;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = -(Math.random() * 0.4 + 0.15);
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.25 + 0.05;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#00A3E0';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const p = new Particle();
+            p.y = Math.random() * canvas.height; // random start position
+            particles.push(p);
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    }
 });
